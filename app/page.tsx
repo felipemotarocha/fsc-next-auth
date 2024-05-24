@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LogInIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
 
 import { z } from "zod";
 
@@ -37,7 +38,7 @@ const Home = () => {
           <h1>Home</h1>
 
           <div>
-            <Button className="gap-x-2">
+            <Button className="gap-x-2" onClick={() => signIn()}>
               <LogInIcon />
               Sign in
             </Button>
