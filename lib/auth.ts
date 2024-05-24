@@ -4,11 +4,15 @@ import { prisma } from "./prisma";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+import Resend from "next-auth/providers/resend";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
     Google,
+    Resend({
+      from: "onboarding@resend.dev",
+    }),
     Credentials({
       credentials: {
         email: { label: "Email", type: "email" },
